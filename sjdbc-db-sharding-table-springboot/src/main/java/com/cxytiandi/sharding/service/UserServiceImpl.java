@@ -28,8 +28,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByName(String name) {
+	public List<User> findByName(String name) {
 		return userRepository.findByName(name);
+	}
+
+	@Override
+	public List<User> between(Long sId, Long eId) {
+		return userRepository.between(sId,eId);
 	}
 
 }

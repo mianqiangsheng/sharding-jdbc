@@ -12,6 +12,8 @@ public interface UserService {
 	
 	User findById(Long id);
 	
-	User findByName(String name);
+	List<User> findByName(String name);
+
+	List<User> between(Long sId, Long eId);
 	
 }

@@ -29,5 +29,9 @@
     <select id="findByName" resultMap="baseResultMap">
         SELECT u.* FROM user u WHERE u.name=#{name,jdbcType=VARCHAR}
     </select>
-    
+
+    <select id="between" resultMap="baseResultMap">
+        SELECT u.* FROM user u WHERE u.id BETWEEN #{sId,jdbcType=INTEGER} AND #{eId,jdbcType=INTEGER}
+    </select>
+
 </mapper>

@@ -9,5 +9,6 @@
     <mappers>
         <mapper resource="META-INF/mappers/User.xml"/>
         <mapper resource="META-INF/mappers/LouDong.xml"/>
+        <mapper resource="META-INF/mappers/Person.xml"/>
     </mappers>
 </configuration>

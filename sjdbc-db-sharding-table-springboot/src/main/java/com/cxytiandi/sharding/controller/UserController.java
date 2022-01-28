@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cxytiandi.sharding.po.User;
 import com.cxytiandi.sharding.service.UserService;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 	
@@ -27,6 +29,11 @@ public class UserController {
 			user.setName("李四");
 			userService.add(user);
 		}
+//		User user = new User();
+//		user.setId(3L);
+//		user.setCity("深圳");
+//		user.setName("李四");
+//		userService.add(user);
 		return "success";
 	}
 	
@@ -34,10 +41,17 @@ public class UserController {
 	public Object get(@PathVariable Long id) {
 		return userService.findById(id);
 	}
-	
+
+	// 查询所有涉及的分片将符合的结果返回
 	@GetMapping("/users/query")
-	public Object get(String name) {
+	public List<User> get(String name) {
 		return userService.findByName(name);
+	}
+
+	// 范围查询必须要使用标准分片策略，提供RangeShardingAlgorithm实现类
+	@GetMapping("/users/between")
+	public List<User> get(Long sId, Long eId) {
+		return userService.between(sId,eId);
 	}
 	
 }
